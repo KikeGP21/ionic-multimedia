@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlacesService } from './places.service';
+import { place } from './place.model';
 
 @Component({
   selector: 'app-places',
@@ -6,15 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./places.page.scss'],
 })
 export class PlacesPage implements OnInit {
+  public title: String = 'Lugares del mundo';
+  public places: place[] = [];
 
-  public title:String = "Lugares"
-
-  constructor() { }
+  constructor(private placeService: PlacesService) {}
 
   ngOnInit() {
     //debugger;
-    console.log('Iniciando página...')
-    console.log(this.title);
+    console.log('Iniciando página... ' + this.title);
+    this.places = this.placeService.getPlaces();
   }
-
 }
