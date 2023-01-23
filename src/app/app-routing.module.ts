@@ -27,7 +27,9 @@ const routes: Routes = [
         path: ':placeID',
 
         loadChildren: () =>
-          import('./places/place-detail/place-detail.module').then((m) => m.PlaceDetailPageModule),
+          import('./places/place-detail/place-detail.module').then(
+            (m) => m.PlaceDetailPageModule
+          ),
       },
     ],
   },
