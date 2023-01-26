@@ -10,10 +10,10 @@ export class PlacesService {
       id: '1',
       title: 'Torre Eiffel',
       imageURL:
-        'https://www.mercerhoteles.com/photo/blog/45/1/sevilla-a-los-pies-de-la-giralda.jpg?w=1440',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Eiffelturm.JPG/275px-Eiffelturm.JPG',
       comments: [
-        'Maravillosa torre, preciosa',
-        'una belleza, impresionante altura',
+        'Maravillosa torre, preciosa.',
+        'Una belleza, impresionante altura.',
       ],
     },
     {
@@ -22,19 +22,26 @@ export class PlacesService {
       imageURL:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Statue_of_Liberty_7.jpg/1200px-Statue_of_Liberty_7.jpg',
       comments: [
-        'Increibles vistas desde la bahía',
-        'Las vistas desde arriba son una pasada',
+        'Increibles vistas desde la bahía.',
+        'Las vistas desde arriba son una pasada.',
       ],
     },
     {
       id: '3',
+      title: 'La giralda',
+      imageURL:
+        'https://www.mercerhoteles.com/photo/blog/45/1/sevilla-a-los-pies-de-la-giralda.jpg?w=1440',
+      comments: [],
+    },
+    {
+      id: '4',
       title: 'Messi',
       imageURL:
         'https://i.pinimg.com/474x/bd/10/77/bd1077fc515fff7d6795d22731f79007.jpg',
       comments: ['Lionel Andres Messi Cucittini'],
     },
     {
-      id: '4',
+      id: '5',
       title: 'Lucario',
       imageURL: 'https://images8.alphacoders.com/875/875827.jpg',
       comments: [
@@ -42,13 +49,13 @@ export class PlacesService {
       ],
     },
     {
-      id: '5',
+      id: '6',
       title: 'Mona Lisa',
       imageURL:
         'https://media.tacdn.com/media/attractions-splice-spp-674x446/06/6c/50/1b.jpg',
       comments: [
-        'Maravillosa torre, preciosa',
-        'una belleza, impresionante altura',
+        'Maravillosa pintura, preciosa.',
+        'Una belleza, impresionante expresión facial.',
       ],
     },
   ];
@@ -66,7 +73,7 @@ export class PlacesService {
    * Devuelve uno de los elementos del array 'places' mediante Id.
    * Parámetro de entrada: placeId -> Identificador del elemento a devolver.
    */
-  getPlaceId(placeId: string) {
+  getPlaceId(placeId: string | null) {
     return {
       ...this.places.find((place) => {
         return place.id === placeId;

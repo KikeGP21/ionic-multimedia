@@ -11,11 +11,11 @@ export class PlacesPage implements OnInit {
   public title: String = 'Lugares del mundo';
   public places: place[] = [];
 
-  constructor(private placeService: PlacesService) {}
+  constructor(private _placeService: PlacesService) {}
 
   ngOnInit() {
     //debugger;
     console.log('Iniciando página... ' + this.title);
-    this.places = this.placeService.getPlaces();
+    this.places = this._placeService.getPlaces();
   }
 }
