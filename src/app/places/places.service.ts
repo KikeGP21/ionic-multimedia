@@ -82,7 +82,8 @@ export class PlacesService {
   }
 
   /**
-   *
+   * addPlace:
+   * parámetro de entrada: title, imageURL
    */
   addPlace(title: string, imageURL: string) {
     this.places.push({
@@ -94,7 +95,8 @@ export class PlacesService {
   }
 
   /**
-   *
+   * deletePlace: Borra un elemento de array de objetos
+   * parámetro de entrada: placeId
    */
   deletePlace(placeId: string) {
     this.places = this.places.filter((place) => {

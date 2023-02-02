@@ -3,8 +3,9 @@ import { PlacesPageRoutingModule } from '../places-routing.module';
 import { PlacesPageModule } from '../places.module';
 import { PlacesPage } from '../places.page';
 import { PlacesService } from '../places.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { place } from '../place.model';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-place-detail',
@@ -17,20 +18,47 @@ export class PlaceDetailPage implements OnInit {
   public sinComments: string = "No hay comentarios todavía...";
 
   constructor(
-    private activedRouted: ActivatedRoute,
-    private placesService: PlacesService
+    private _activedRouted: ActivatedRoute,
+    private _placesService: PlacesService,
+    private _router: Router,
+    private _alertCtrl: AlertController
+
   ) {}
 
   ngOnInit() {
     // this.place = this.placeService.getPlaceId("");
-    this.activedRouted.paramMap.subscribe((paramMap) => {
+    this._activedRouted.paramMap.subscribe((paramMap) => {
       const recipeId: string|null= paramMap.get('placeID');
-      this.place = this.placesService.getPlaceId(recipeId);
+      this.place = this._placesService.getPlaceId(recipeId);
       console.log(this.place);
     });
   }
 
-  deletePlace(){
-    alert("Place eliminado.")
+  /**
+   * deletePlace: borra el place actual y vuelve a la vista de listado de places
+   */
+  async deletePlace(){
+
+    const element = await this._alertCtrl.create(
+      {
+        header: "¿ Estás seguro de querrer borrar el place '" + this.place.title + "' ?",
+        message: "Ten cuidado...",
+        buttons:[
+          {
+          text: "Cancelar",
+          role: "cancel"
+        },
+        {
+          text: "Aceptar",
+          handler: () => {
+          alert("Place '" + this.place.title + "' eliminado.")
+          this._placesService.deletePlace(this.place.id)
+          this._router.navigate(['/places']) }
+        }
+        ]
+      }
+    );
+
+    await element.present()
   }
 }
