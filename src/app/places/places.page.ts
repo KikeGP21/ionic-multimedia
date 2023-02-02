@@ -30,4 +30,19 @@ export class PlacesPage implements OnInit {
   NewPlace(){
     this._routerCtrl.navigate(['/places/place-add'])
   }
+
+  /**
+   * Probar listado JSON de internet
+   */
+  goToHome(){
+    this._routerCtrl.navigate(['home'])
+  }
+
+  /**
+   * 
+   * @param ruta 
+   */
+  routerNavigate(ruta: string){
+
+  }
 }

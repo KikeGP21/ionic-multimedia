@@ -1,9 +1,19 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> APLICACIÓN IONIC </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar color="dark">
+      <ion-title> APLICACIÓN IONIC </ion-title>
+      <ion-button slot="start" color="medium">
+        <ion-back-button defaultHref="/places"></ion-back-button>
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content [fullscreen]="true">
-  <h1>Mi primera aplicación en Ionic</h1>
+<ion-content [fullscreen]="true" color="medium">
+    <!--<h1>Mi primera aplicación en Ionic</h1>-->
+    <ion-card *ngFor="let foto of fotos">
+      <a [href]="foto.url" target="_blank"><ion-img [src]="foto.thumbnailUrl"></ion-img></a>
+      <ion-card-content>
+        <p>{{foto.title}}</p>
+        <p>{{foto.albumId}}</p>:<a [href]="foto.url" target="_blank">{{foto.url}}</a>
+      </ion-card-content>
+    </ion-card>
 </ion-content>

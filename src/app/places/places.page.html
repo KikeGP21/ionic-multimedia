@@ -1,10 +1,18 @@
 <ion-header>
   <ion-toolbar  color = "dark">
+
     <ion-title>Places Page</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="globe" class="mi-clase"></ion-icon>
+      </ion-button>
+    
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="fondo">
   {{title}}
   <ion-list>
     <!--<ion-item *ngFor="let place of places" [routerLink]="['/home']">-->
